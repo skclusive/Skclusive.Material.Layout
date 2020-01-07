@@ -1,0 +1,29 @@
+﻿@namespace Skclusive.Material.Layout
+@inherits MainLayoutComponent
+
+<Component
+    RootRef="@RootRef"
+    Tag="@Component"
+    Class="@_Class"
+    Style="@_Style"
+    @attributes="Attributes">
+    <MainTopbar
+        Class="@TopbarClass"
+        Style="@TopbarStyle"
+        OnSidebarOpen="@HandleSidebarOpen" />
+    <Sidebar
+        Class="@SidebarClass"
+        Style="@SidebarStyle"
+        OnClose="@HandleSidebarClose"
+        Open="@SidebarOpen"
+        Variant="@SidebarVariant"
+        ProfileContent="@ProfileContent"
+        NavigationContent="@NavigationContent"
+    />
+    <main
+        class="@_ContentClass"
+        style="@_ContentStyle">
+        @BodyContent
+        @FooterContent?.Invoke(("", ""))
+    </main>
+</Component>

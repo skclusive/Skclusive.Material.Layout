@@ -1,0 +1,35 @@
+﻿@namespace Skclusive.Material.Layout
+@inherits NavigationComponent
+
+<List
+    RootRef="@RootRef"
+    Class="@_Class"
+    Style="@_Style"
+    @attributes="Attributes">
+    <ChildContent>
+    @foreach(var item in Items)
+    {
+        <ListItem
+            @key="@item.Title"
+            Class="@_ItemClass"
+            Style="@_ItemStyle"
+            NoWrap
+            DisableGutters
+            Button>
+            <NavLink
+                ActiveClass="@_ActiveClass"
+                class="@_LinkClass"
+                style="@_LinkStyle"
+                href="@item.Path"
+                Match="@(item.Prefix ? NavLinkMatch.Prefix : NavLinkMatch.All)">
+                <div
+                    class="@_IconClass"
+                    style="@_IconStyle">
+                    @item.Icon
+                </div>
+                @item.Title
+            </NavLink>
+        </ListItem>
+    }
+    </ChildContent>
+</List>

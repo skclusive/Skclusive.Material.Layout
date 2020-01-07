@@ -1,0 +1,23 @@
+﻿@namespace Skclusive.Material.Layout
+@inherits FooterComponent
+
+<Component
+    RootRef="@RootRef"
+    Tag="@Component"
+    Class="@_Class"
+    Style="@_Style"
+    @attributes="Attributes">
+    <Typography
+        Variant="@TypographyVariant.Body1">
+        &copy;
+        <a
+            href="@DomainUrl"
+            target="_blank">
+            @DomainName
+        </a>. @Copyright
+    </Typography>
+    <Typography
+        Variant="@TypographyVariant.Caption">
+        @ChildContent
+    </Typography>
+</Component>

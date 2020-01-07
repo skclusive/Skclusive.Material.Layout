@@ -1,0 +1,24 @@
+﻿@namespace Skclusive.Material.Layout
+@inherits SidebarComponent
+
+<Drawer
+    RootRef="@RootRef"
+    Class="@_Class"
+    Style="@_Style"
+    Open="@Open"
+    OnClose="@OnClose"
+    Anchor="@Placement.Start"
+    Variant="@Variant"
+    PaperStyle="@_DrawerStyle"
+    PaperClass="@_DrawerClass"
+    @attributes="Attributes">
+    <div
+        class="@_ContentClass"
+        style="@_ContentStyle">
+        @ProfileContent?.Invoke(("", ""))
+        <Divider
+            Class="@_DividerClass"
+            Style="@_DividerStyle" />
+        @NavigationContent?.Invoke((_NavigationClass, _NavigationStyle))
+    </div>
+</Drawer>

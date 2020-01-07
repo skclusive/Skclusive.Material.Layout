@@ -1,0 +1,29 @@
+﻿@namespace Skclusive.Material.Layout
+@inherits ProfileComponent
+
+<Component
+    RootRef="@RootRef"
+    Tag="@Component"
+    Class="@_Class"
+    Style="@_Style"
+    @attributes="Attributes">
+    <NavLink
+        href="settings"
+        Match="@NavLinkMatch.Prefix">
+        <Avatar
+            Class="@_AvatarClass"
+            Style="@_AvatarStyle"
+            Alt="Person"
+            Src="@Avatar" />
+    </NavLink>
+    <Typography
+        Class="@_NameClass"
+        Style="@_NameStyle"
+        Variant="@TypographyVariant.H5">
+        @Name
+    </Typography>
+    <Typography
+        Variant="@TypographyVariant.Body2">
+        @Bio
+    </Typography>
+</Component>

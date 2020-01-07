@@ -1,0 +1,18 @@
+﻿@namespace Skclusive.Material.Layout
+@inherits MiniLayoutComponent
+
+<Component
+    RootRef="@RootRef"
+    Tag="@Component"
+    Class="@_Class"
+    Style="@_Style"
+    @attributes="Attributes">
+    <MiniTopbar
+        Class="@TopbarClass"
+        Style="@TopbarStyle" />
+    <main
+        class="@_ContentClass"
+        style="@_ContentStyle">
+        @BodyContent
+    </main>
+</Component>

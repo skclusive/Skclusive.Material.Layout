@@ -1,0 +1,23 @@
+﻿@namespace Skclusive.Material.Layout
+@inherits TopbarComponent
+
+<AppBar
+    RootRef="@RootRef"
+    Class="@_Class"
+    Style="@_Style"
+    @attributes="Attributes">
+    <Toolbar>
+        <NavLink
+            href="./"
+            Match="@NavLinkMatch.Prefix">
+            <AppLogo />
+        </NavLink>
+        @if (HasContent)
+        {
+            <div
+                class="@_GrowClass"
+                style="@_GrowStyle" />
+            @ChildContent
+        }
+    </Toolbar>
+</AppBar>

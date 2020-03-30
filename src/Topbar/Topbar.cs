@@ -19,6 +19,17 @@ namespace Skclusive.Material.Layout
         [Parameter]
         public string GrowClass { set; get; }
 
+        [Parameter]
+        public RenderFragment LogoContent { set; get; }
+
+        [Parameter]
+        public RenderFragment ActionsContent { set; get; }
+
+        [Parameter]
+        public Action OnSidebarClick { set; get; }
+
+        protected bool HasLogoContent => LogoContent != null;
+
         protected virtual string _GrowStyle
         {
             get => CssUtil.ToStyle(GrowStyles, GrowStyle);

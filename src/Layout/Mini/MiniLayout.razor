@@ -7,12 +7,17 @@
     Class="@_Class"
     Style="@_Style"
     @attributes="Attributes">
-    <MiniTopbar
+    <Topbar
         Class="@TopbarClass"
-        Style="@TopbarStyle" />
+        Style="@TopbarStyle">
+        <LogoContent>
+            @LogoContent
+        </LogoContent>
+    </Topbar>
     <main
         class="@_ContentClass"
         style="@_ContentStyle">
         @BodyContent
+        @FooterContent
     </main>
 </Component>

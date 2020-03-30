@@ -14,7 +14,13 @@ namespace Skclusive.Material.Layout
         }
 
         [Parameter]
+        public RenderFragment LogoContent { set; get; }
+
+        [Parameter]
         public RenderFragment BodyContent { get; set; }
+
+        [Parameter]
+        public RenderFragment FooterContent { set; get; }
 
         [Parameter]
         public string Component { set; get; } = "div";

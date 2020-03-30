@@ -6,7 +6,6 @@
     Class="@_Class"
     Style="@_Style"
     @attributes="Attributes">
-    <ChildContent>
     @foreach(var item in Items)
     {
         <ListItem
@@ -18,18 +17,18 @@
             Button>
             <NavLink
                 ActiveClass="@_ActiveClass"
-                class="@_LinkClass"
-                style="@_LinkStyle"
+                class="@($"{context.Class} {_LinkClass}")"
+                style="@($"{_LinkStyle};color: inherit;")"
                 href="@item.Path"
                 Match="@(item.Prefix ? NavLinkMatch.Prefix : NavLinkMatch.All)">
-                <div
-                    class="@_IconClass"
-                    style="@_IconStyle">
+                <ListItemIcon
+                    Class="@_IconClass"
+                    Style="@_IconStyle">
                     @item.Icon
-                </div>
-                @item.Title
+                </ListItemIcon>
+                <ListItemText
+                        Primary="@item.Title" />
             </NavLink>
         </ListItem>
     }
-    </ChildContent>
 </List>

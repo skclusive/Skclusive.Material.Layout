@@ -1,35 +1,58 @@
-﻿namespace Skclusive.Material.Layout
+﻿using Skclusive.Material.Component;
+
+namespace Skclusive.Material.Layout
 {
-    public interface ILayoutConfig
+    public interface ILayoutConfig : IMaterialConfig
     {
         bool Responsive { get; }
     }
 
-    public class LayoutConfigBuilder
+    public abstract class LayoutConfigBuilder<B, C> : MaterialConfigBuilder<B, C>
+    where B : LayoutConfigBuilder<B, C>
+    where C : ILayoutConfig
     {
-        private class LayoutConfig : ILayoutConfig
+        protected class LayoutConfig : MaterialConfig, ILayoutConfig
         {
             public bool Responsive { get; internal set; }
         }
 
-        private readonly LayoutConfig config = new LayoutConfig();
+        private LayoutConfig config;
 
-        public ILayoutConfig Build()
+        protected LayoutConfigBuilder(LayoutConfig config) : base(config)
         {
-            return config;
+            this.config = config;
         }
 
-        public LayoutConfigBuilder WithResponsive(bool responsive)
+        public B WithResponsive(bool responsive)
         {
             config.Responsive = responsive;
 
-            return this;
+            return Builder();
         }
 
-        public LayoutConfigBuilder With(ILayoutConfig config)
+        public B With(ILayoutConfig config)
         {
+            base.With(config);
+
             WithResponsive(config.Responsive);
 
+            return Builder();
+        }
+    }
+
+    public class LayoutConfigBuilder : LayoutConfigBuilder<LayoutConfigBuilder, ILayoutConfig>
+    {
+        public LayoutConfigBuilder() : base(new LayoutConfig())
+        {
+        }
+
+        protected override ILayoutConfig Config()
+        {
+            return (ILayoutConfig)_config;
+        }
+
+        protected override LayoutConfigBuilder Builder()
+        {
             return this;
         }
     }

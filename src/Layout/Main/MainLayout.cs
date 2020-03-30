@@ -17,7 +17,25 @@ namespace Skclusive.Material.Layout
         }
 
         [Parameter]
+        public RenderFragment LogoContent { set; get; }
+
+        [Parameter]
+        public RenderFragment TitleContent { set; get; }
+
+        [Parameter]
+        public RenderFragment ActionsContent { set; get; }
+
+        [Parameter]
         public RenderFragment BodyContent { get; set; }
+
+        [Parameter]
+        public RenderFragment SidebarContent { set; get; }
+
+        [Parameter]
+        public RenderFragment FooterContent { set; get; }
+
+        [Parameter]
+        public Action OnSidebarClick { set; get; }
 
         [Inject]
         public MediaQueryMatcher MediaQueryMatcher  { get; set; }
@@ -45,15 +63,6 @@ namespace Skclusive.Material.Layout
 
         [Parameter]
         public string ContentClass { set; get; }
-
-        [Parameter]
-        public RenderFragment<(string, string)> ProfileContent { set; get; }
-
-        [Parameter]
-        public RenderFragment<(string, string)> NavigationContent { set; get; }
-
-        [Parameter]
-        public RenderFragment<(string, string)> FooterContent { set; get; }
 
         protected bool IsDesktop { set; get; } = false;
 
@@ -105,9 +114,11 @@ namespace Skclusive.Material.Layout
             StateHasChanged();
         }
 
-        protected void HandleSidebarOpen()
+        protected void HandleSidebarClick()
         {
             SidebarOpen = true;
+
+            OnSidebarClick?.Invoke();
 
             StateHasChanged();
         }
@@ -139,9 +150,12 @@ namespace Skclusive.Material.Layout
         {
             TimeoutDisposal?.Dispose();
 
-            MediaQueryMatcher.OnChange -= OnMediaQueryChanged;
+            if (LayoutConfig.Responsive)
+            {
+                MediaQueryMatcher.OnChange -= OnMediaQueryChanged;
 
-            _ = MediaQueryMatcher.UnRegisterAsync();
+                _ = MediaQueryMatcher.UnRegisterAsync();
+            }
         }
     }
 }

@@ -7,7 +7,7 @@
     Style="@_Style"
     Open="@Open"
     OnClose="@OnClose"
-    Anchor="@Placement.Start"
+    Anchor="@Anchor.Left"
     Variant="@Variant"
     PaperStyle="@_DrawerStyle"
     PaperClass="@_DrawerClass"
@@ -15,10 +15,6 @@
     <div
         class="@_ContentClass"
         style="@_ContentStyle">
-        @ProfileContent?.Invoke(("", ""))
-        <Divider
-            Class="@_DividerClass"
-            Style="@_DividerStyle" />
-        @NavigationContent?.Invoke((_NavigationClass, _NavigationStyle))
+        @ChildContent
     </div>
 </Drawer>

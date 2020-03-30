@@ -5,19 +5,35 @@
     RootRef="@RootRef"
     Class="@_Class"
     Style="@_Style"
+    Color="@Color.Custom"
     @attributes="Attributes">
     <Toolbar>
-        <NavLink
-            href="./"
-            Match="@NavLinkMatch.Prefix">
-            <AppLogo />
-        </NavLink>
-        @if (HasContent)
+        @if (HasLogoContent)
         {
-            <div
-                class="@_GrowClass"
-                style="@_GrowStyle" />
-            @ChildContent
+            <NavLink
+                href="./"
+                style="color: inherit;"
+                Match="@NavLinkMatch.Prefix">
+                @LogoContent
+            </NavLink>
+        }
+        @ChildContent
+        <div
+            class="@_GrowClass"
+            style="@_GrowStyle" />
+        @ActionsContent
+        @if (OnSidebarClick != null)
+        {
+            <Hidden
+                LargeUp
+                Context="HiddenContext">
+                <IconButton
+                    Class="@HiddenContext.Class"
+                    Color="@Color.Inherit"
+                    OnClick="@OnSidebarClick">
+                    <MenuIcon />
+                </IconButton>
+            </Hidden>
         }
     </Toolbar>
 </AppBar>

@@ -47,12 +47,6 @@ namespace Skclusive.Material.Layout
         [Parameter]
         public string DividerClass { set; get; }
 
-        [Parameter]
-        public RenderFragment<(string, string)> ProfileContent { set; get; }
-
-        [Parameter]
-        public RenderFragment<(string, string)> NavigationContent { set; get; }
-
         protected virtual string _ContentStyle
         {
             get => CssUtil.ToStyle(ContentStyles, ContentStyle);

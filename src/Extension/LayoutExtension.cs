@@ -1,15 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Skclusive.Material.Component;
 
 namespace Skclusive.Material.Layout
 {
     public static class LayoutExtension
     {
-        public static void AddLayout(this IServiceCollection services, ILayoutConfig config)
+        public static void TryAddLayoutServices(this IServiceCollection services, ILayoutConfig config)
         {
-            services.AddMaterialUI();
+            services.TryAddMaterialServices(config);
 
-            services.AddSingleton<ILayoutConfig>(config);
+            services.TryAddSingleton<ILayoutConfig>(config);
         }
     }
 }

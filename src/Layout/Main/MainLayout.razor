@@ -7,23 +7,32 @@
     Class="@_Class"
     Style="@_Style"
     @attributes="Attributes">
-    <MainTopbar
+    <Topbar
         Class="@TopbarClass"
         Style="@TopbarStyle"
-        OnSidebarOpen="@HandleSidebarOpen" />
+        OnSidebarClick="@HandleSidebarClick">
+        <LogoContent>
+            @LogoContent
+        </LogoContent>
+        <ChildContent>
+            @TitleContent
+        </ChildContent>
+        <ActionsContent>
+            @ActionsContent
+        </ActionsContent>
+    </Topbar>
     <Sidebar
         Class="@SidebarClass"
         Style="@SidebarStyle"
         OnClose="@HandleSidebarClose"
         Open="@SidebarOpen"
-        Variant="@SidebarVariant"
-        ProfileContent="@ProfileContent"
-        NavigationContent="@NavigationContent"
-    />
+        Variant="@SidebarVariant">
+        @SidebarContent
+    </Sidebar>
     <main
         class="@_ContentClass"
         style="@_ContentStyle">
         @BodyContent
-        @FooterContent?.Invoke(("", ""))
+        @FooterContent
     </main>
 </Component>

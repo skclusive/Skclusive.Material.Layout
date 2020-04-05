@@ -22,7 +22,7 @@
             class="@_GrowClass"
             style="@_GrowStyle" />
         @ActionsContent
-        @if (OnSidebarClick != null)
+        @if (OnSidebarToggle != null)
         {
             <Hidden
                 LargeUp
@@ -30,7 +30,7 @@
                 <IconButton
                     Class="@HiddenContext.Class"
                     Color="@Color.Inherit"
-                    OnClick="@OnSidebarClick">
+                    OnClick="@OnSidebarToggle">
                     <MenuIcon />
                 </IconButton>
             </Hidden>

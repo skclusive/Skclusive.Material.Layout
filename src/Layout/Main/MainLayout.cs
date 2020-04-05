@@ -116,6 +116,14 @@ namespace Skclusive.Material.Layout
 
         protected void HandleSidebarClick()
         {
+            if (!IsDesktop)
+            {
+                HandleSidebarClose();
+            }
+        }
+
+        protected void HandleSidebarToggle()
+        {
             SidebarOpen = true;
 
             OnSidebarClick?.Invoke();

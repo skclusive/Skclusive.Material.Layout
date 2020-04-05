@@ -18,7 +18,7 @@
             <NavLink
                 ActiveClass="@_ActiveClass"
                 class="@($"{context.Class} {_LinkClass}")"
-                style="@($"{_LinkStyle};color: inherit;")"
+                style="@($"{_LinkStyle}")"
                 href="@item.Path"
                 Match="@(item.Prefix ? NavLinkMatch.Prefix : NavLinkMatch.All)">
                 <ListItemIcon

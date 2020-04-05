@@ -26,7 +26,7 @@ namespace Skclusive.Material.Layout
         public RenderFragment ActionsContent { set; get; }
 
         [Parameter]
-        public Action OnSidebarClick { set; get; }
+        public Action OnSidebarToggle { set; get; }
 
         protected bool HasLogoContent => LogoContent != null;
 

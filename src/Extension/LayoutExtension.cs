@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Skclusive.Core.Component;
 using Skclusive.Material.Component;
 
 namespace Skclusive.Material.Layout
@@ -10,7 +11,9 @@ namespace Skclusive.Material.Layout
         {
             services.TryAddMaterialServices(config);
 
-            services.TryAddSingleton<ILayoutConfig>(config);
+            services.TryAddScoped<ILayoutConfig>((p) => config);
+
+            services.AddSingleton<IStyleTypeProvider, LayoutStyleProvider>();
         }
     }
 }

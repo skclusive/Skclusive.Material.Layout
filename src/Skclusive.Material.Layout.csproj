@@ -15,11 +15,11 @@
     <RepositoryUrl>https://github.com/skclusive/Skclusive.Material.Layout</RepositoryUrl>
   </PropertyGroup>
 
-  <!-- <ItemGroup>
-    <PackageReference Include="Skclusive.Material.Component" Version="3.0.1-preview1" />
-  </ItemGroup> -->
-
   <ItemGroup>
-    <ProjectReference Include="..\..\Skclusive.Material.Component\Material\src\Material.csproj" Version="3.0.1-preview1" />
+    <PackageReference Include="Skclusive.Material.Component" Version="3.0.1-preview1" />
   </ItemGroup>
+
+  <!-- <ItemGroup>
+    <ProjectReference Include="..\..\Skclusive.Material.Component\Material\src\Material.csproj" Version="3.0.1-preview1" />
+  </ItemGroup> -->
 </Project>

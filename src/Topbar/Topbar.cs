@@ -19,6 +19,9 @@ namespace Skclusive.Material.Layout
         [Parameter]
         public string GrowClass { set; get; }
 
+         [Parameter]
+        public Color Color { set; get; } = Color.Primary;
+
         [Parameter]
         public RenderFragment LogoContent { set; get; }
 

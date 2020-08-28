@@ -1,34 +1,21 @@
 ﻿@namespace Skclusive.Material.Layout
 @using System.Reflection
-@using Skclusive.Material.Theme
-@inject IThemeService ThemeService
 
-<CascadingValue
-    Value="@ThemeContext">
-    <SingleRender>
-        <ThemeProvider
-            Default="@Default"
-            Light="@Light"
-            Dark="@Dark" />
-        <InjectedStyles />
-        <Router
-            AppAssembly="@Assembly">
-            <Found
-                Context="routeData">
-                <RouteView
-                    RouteData="@routeData"
-                    DefaultLayout="@Main" />
-            </Found>
-            <NotFound>
-                <LayoutView
-                    Layout="@Mini">
-                    <NotFound />
-                </LayoutView>
-            </NotFound>
-        </Router>
-        <InjectedScripts />
-    </SingleRender>
-</CascadingValue>
+<Router
+    AppAssembly="@Assembly">
+    <Found
+        Context="routeData">
+        <RouteView
+            RouteData="@routeData"
+            DefaultLayout="@Main" />
+    </Found>
+    <NotFound>
+        <LayoutView
+            Layout="@Mini">
+            <NotFound />
+        </LayoutView>
+    </NotFound>
+</Router>
 
 @code
 {
@@ -38,31 +25,5 @@
     [Parameter]
     public Type Mini { set; get; } = typeof(MiniLayout);
 
-    [Parameter]
-    public Skclusive.Material.Theme.Theme Light { set; get; }
-
-    [Parameter]
-    public Skclusive.Material.Theme.Theme Dark { set; get; }
-
-    [Parameter]
-    public Skclusive.Material.Theme.Theme Default { set; get; }
-
     public Assembly Assembly => Main.Assembly;
-
-    protected IThemeContext ThemeContext => new ThemeContext(ThemeService.Current);
-
-    protected override void OnInitialized()
-    {
-        ThemeService.OnChange += OnThemeChange;
-    }
-
-    protected void OnThemeChange(object sender, Skclusive.Core.Component.Theme current)
-    {
-        _ = InvokeAsync(StateHasChanged);
-    }
-
-    protected void Dispose()
-    {
-        ThemeService.OnChange -= OnThemeChange;
-    }
 }

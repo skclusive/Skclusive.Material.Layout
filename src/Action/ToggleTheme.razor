@@ -22,7 +22,7 @@
 
     private void OnThemeChange()
     {
-        var theme = IsLight ? Skclusive.Core.Component.Theme.Dark : Skclusive.Core.Component.Theme.Light;
+        var theme = IsLight ? Theme.Dark : Theme.Light;
 
         ThemeService.ChangeTheme(theme);
     }

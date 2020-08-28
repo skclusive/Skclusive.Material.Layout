@@ -1,44 +1,40 @@
 ﻿@namespace Skclusive.Material.Layout
 @inherits StyleComponentBase
 
-<style data-name="Navigation">
+.Navigation-Root {
+}
 
-    .Navigation-Root {
-    }
+.Navigation-Item {
+    display: flex;
+    padding-top: 0;
+    padding-bottom: 0;
+}
 
-    .Navigation-Item {
-        display: flex;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
+.Navigation-Link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+    justify-content: flex-start;
+    color: inherit;
+    width: 100%;
+    padding: 10px 8px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    justify-content: flex-start;
+}
 
-    .Navigation-Link {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        position: relative;
-        justify-content: flex-start;
-        color: inherit;
-        width: 100%;
-        padding: 10px 8px;
-        font-weight: 500;
-        letter-spacing: 0;
-        text-transform: none;
-        justify-content: flex-start;
-    }
+.Navigation-Icon {
+    color: inherit;
+    height: 24px;
+}
 
-    .Navigation-Icon {
-        color: inherit;
-        height: 24px;
-    }
+.Navigation-Active {
+    color: var(--theme-palette-primary-main);
+    font-weight: 500;
+}
 
-    .Navigation-Active {
-        color: var(--theme-palette-primary-main);
-        font-weight: 500;
-    }
-
-    .Navigation-Active .Navigation-Icon {
-        color: var(--theme-palette-primary-main);
-    }
-
-</style>
+.Navigation-Active .Navigation-Icon {
+    color: var(--theme-palette-primary-main);
+}

@@ -131,14 +131,14 @@ namespace Skclusive.Material.Layout
             StateHasChanged();
         }
 
-        protected override  Task OnInitializedAsync()
+        protected override Task OnInitializedAsync()
         {
             MediaQueryMatcher.OnChange += OnMediaQueryChanged;
 
             if (LayoutConfig.Responsive)
             {
                 TimeoutDisposal = ExecutionPlan.Delay(500, () => {
-                    _ = MediaQueryMatcher.RegisterAsync("(min-width:1280px)");
+                    _ = MediaQueryMatcher.InitAsync("(min-width:1280px)");
                 });
             }
 
@@ -151,10 +151,10 @@ namespace Skclusive.Material.Layout
 
             SidebarOpen = IsDesktop;
 
-            StateHasChanged();
+            _ = InvokeAsync(StateHasChanged);
         }
 
-        protected override void Dispose()
+        protected override async ValueTask DisposeAsync()
         {
             TimeoutDisposal?.Dispose();
 
@@ -162,7 +162,7 @@ namespace Skclusive.Material.Layout
             {
                 MediaQueryMatcher.OnChange -= OnMediaQueryChanged;
 
-                _ = MediaQueryMatcher.UnRegisterAsync();
+                await MediaQueryMatcher.DisposeAsync();
             }
         }
     }

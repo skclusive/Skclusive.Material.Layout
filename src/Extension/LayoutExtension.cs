@@ -25,12 +25,12 @@ namespace Skclusive.Material.Layout
             services.TryAddAvatarServices(config);
             services.TryAddTypographyServices(config);
             services.TryAddToolbarServices(config);
-            services.TryAddHiddenServices(config);
             services.TryAddGridServices(config);
             services.TryAddAppBarServices(config);
             services.TryAddButtonServices(config);
             services.TryAddListServices(config);
             services.TryAddDrawerServices(config);
+            services.TryAddHiddenServices(config);
 
             services.TryAddScoped<ILayoutConfig>((p) => config);
 

@@ -3,16 +3,16 @@
 
 <Baseline />
 <Router
-    AppAssembly="@Assembly">
+    AppAssembly="@_Assembly">
     <Found
         Context="routeData">
         <RouteView
             RouteData="@routeData"
-            DefaultLayout="@Main" />
+            DefaultLayout="@_Main" />
     </Found>
     <NotFound>
         <LayoutView
-            Layout="@Mini">
+            Layout="@_Mini">
             <NotFound />
         </LayoutView>
     </NotFound>
@@ -21,10 +21,20 @@
 @code
 {
     [Parameter]
-    public Type Main { set; get; } = typeof(MainLayout);
+    public Type Default { set; get; }
 
     [Parameter]
-    public Type Mini { set; get; } = typeof(MiniLayout);
+    public Type Main { set; get; }
 
-    public Assembly Assembly => Main.Assembly;
+    [Parameter]
+    public Type Mini { set; get; }
+
+    [Parameter]
+    public Assembly Assembly { set; get; }
+
+    private Type _Main => Main ?? Default ?? typeof(MainLayout);
+
+    private Type _Mini => Mini ?? Default ?? Main ?? typeof(MiniLayout);
+
+    private Assembly _Assembly => Assembly ?? _Main.Assembly;
 }

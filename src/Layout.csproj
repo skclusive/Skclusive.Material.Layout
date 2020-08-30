@@ -19,6 +19,7 @@
     <PackageReference Include="Skclusive.Material.Baseline" Version="3.0.4-preview1" />
     <PackageReference Include="Skclusive.Material.Icon" Version="3.0.4-preview1" />
     <PackageReference Include="Skclusive.Material.Avatar" Version="3.0.4-preview1" />
+    <PackageReference Include="Skclusive.Material.Hidden" Version="3.0.4-preview1" />
     <PackageReference Include="Skclusive.Material.Typography" Version="3.0.4-preview1" />
     <PackageReference Include="Skclusive.Material.Toolbar" Version="3.0.4-preview1" />
     <PackageReference Include="Skclusive.Material.Hidden" Version="3.0.4-preview1" />
@@ -33,6 +34,7 @@
     <ProjectReference Include="..\..\Skclusive.Material.Component\Baseline\src\Baseline.csproj" Version="3.0.4-preview1" />
     <ProjectReference Include="..\..\Skclusive.Material.Component\Icon\src\Icon.csproj" Version="3.0.4-preview1" />
     <ProjectReference Include="..\..\Skclusive.Material.Component\Avatar\src\Avatar.csproj" Version="3.0.4-preview1" />
+    <ProjectReference Include="..\..\Skclusive.Material.Component\Hidden\src\Hidden.csproj" Version="3.0.4-preview1" />
     <ProjectReference Include="..\..\Skclusive.Material.Component\Typography\src\Typography.csproj" Version="3.0.4-preview1" />
     <ProjectReference Include="..\..\Skclusive.Material.Component\Toolbar\src\Toolbar.csproj" Version="3.0.4-preview1" />
     <ProjectReference Include="..\..\Skclusive.Material.Component\Hidden\src\Hidden.csproj" Version="3.0.4-preview1" />

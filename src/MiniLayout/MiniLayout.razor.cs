@@ -7,58 +7,35 @@ using Skclusive.Material.Core;
 
 namespace Skclusive.Material.Layout
 {
-    public class NotFoundComponent : MaterialComponent
+    public partial class MiniLayout : MaterialComponentBase
     {
-        public NotFoundComponent() : base("NotFound")
+        public MiniLayout() : base("MiniLayout")
         {
         }
+
+        [Parameter]
+        public RenderFragment LogoContent { set; get; }
+
+        [Parameter]
+        public RenderFragment BodyContent { get; set; }
+
+        [Parameter]
+        public RenderFragment FooterContent { set; get; }
 
         [Parameter]
         public string Component { set; get; } = "div";
 
         [Parameter]
-        public string Title { set; get; }
+        public string TopbarStyle { set; get; }
 
         [Parameter]
-        public string SubTitle { set; get; }
-
-        [Parameter]
-        public string Message { set; get; }
-
-        [Parameter]
-        public string ImageStyle { set; get; }
-
-        [Parameter]
-        public string ImageClass { set; get; }
+        public string TopbarClass { set; get; }
 
         [Parameter]
         public string ContentStyle { set; get; }
 
         [Parameter]
         public string ContentClass { set; get; }
-
-        protected virtual string _ImageStyle
-        {
-            get => CssUtil.ToStyle(ImageStyles, ImageStyle);
-        }
-
-        protected virtual IEnumerable<Tuple<string, object>> ImageStyles
-        {
-            get => Enumerable.Empty<Tuple<string, object>>();
-        }
-
-        protected virtual string _ImageClass
-        {
-            get => CssUtil.ToClass(Selector, ImageClasses, ImageClass);
-        }
-
-        protected virtual IEnumerable<string> ImageClasses
-        {
-            get
-            {
-                yield return "Image";
-            }
-        }
 
         protected virtual string _ContentStyle
         {

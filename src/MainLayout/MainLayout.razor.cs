@@ -10,9 +10,9 @@ using Skclusive.Material.Script;
 
 namespace Skclusive.Material.Layout
 {
-    public class MainLayoutComponent : MaterialComponentBase
+    public partial class MainLayout : MaterialComponentBase
     {
-        public MainLayoutComponent() : base("MainLayout")
+        public MainLayout() : base("MainLayout")
         {
         }
 

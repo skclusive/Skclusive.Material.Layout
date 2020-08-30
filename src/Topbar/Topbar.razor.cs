@@ -7,9 +7,9 @@ using Skclusive.Material.Core;
 
 namespace Skclusive.Material.Layout
 {
-    public class TopbarComponent : MaterialComponent
+    public partial class Topbar : MaterialComponent
     {
-        public TopbarComponent() : base("Topbar")
+        public Topbar() : base("Topbar")
         {
         }
 

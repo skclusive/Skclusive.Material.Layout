@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace Skclusive.Material.Layout
 {
-    public class FooterComponent : MaterialComponent
+    public partial class Footer : MaterialComponent
     {
-        public FooterComponent() : base("Footer")
+        public Footer() : base("Footer")
         {
         }
 

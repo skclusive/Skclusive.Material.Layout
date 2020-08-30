@@ -7,9 +7,9 @@ using Skclusive.Material.Core;
 
 namespace Skclusive.Material.Layout
 {
-    public class ProfileComponent : MaterialComponent
+    public partial class Profile: MaterialComponent
     {
-        public ProfileComponent() : base("Profile")
+        public Profile() : base("Profile")
         {
         }
 

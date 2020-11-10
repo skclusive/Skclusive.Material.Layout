@@ -1,0 +1,29 @@
+@namespace Skclusive.Material.Layout
+@inherits ThemeComponentBase
+
+<IconButton
+    Color="@Color.Inherit"
+    OnClick="@OnThemeChange"
+    aria-label="Toggle light/dark theme"
+    title="Toggle light/dark theme">
+    @if (IsLight)
+    {
+        <Brightness4Icon />
+    } else
+    {
+        <Brightness7Icon />
+    }
+</IconButton>
+
+@code
+{
+    [Inject]
+    public IThemeService ThemeService { set; get; }
+
+    private void OnThemeChange()
+    {
+        var theme = IsLight ? Theme.Dark : Theme.Light;
+
+        ThemeService.ChangeTheme(theme);
+    }
+}

@@ -7,9 +7,9 @@ using Skclusive.Material.Core;
 
 namespace Skclusive.Material.Layout
 {
-    public class NavigationComponent : MaterialComponent
+    public partial class Navigation : MaterialComponent
     {
-        public NavigationComponent() : base("Navigation")
+        public Navigation() : base("Navigation")
         {
         }
 

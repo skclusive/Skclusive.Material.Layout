@@ -1,0 +1,40 @@
+﻿@namespace Skclusive.Material.Layout
+@using System.Reflection
+
+<Baseline />
+<Router
+    AppAssembly="@_Assembly">
+    <Found
+        Context="routeData">
+        <RouteView
+            RouteData="@routeData"
+            DefaultLayout="@_Main" />
+    </Found>
+    <NotFound>
+        <LayoutView
+            Layout="@_Mini">
+            <NotFound />
+        </LayoutView>
+    </NotFound>
+</Router>
+
+@code
+{
+    [Parameter]
+    public Type Default { set; get; }
+
+    [Parameter]
+    public Type Main { set; get; }
+
+    [Parameter]
+    public Type Mini { set; get; }
+
+    [Parameter]
+    public Assembly Assembly { set; get; }
+
+    private Type _Main => Main ?? Default ?? typeof(MainLayout);
+
+    private Type _Mini => Mini ?? Default ?? Main ?? typeof(MiniLayout);
+
+    private Assembly _Assembly => Assembly ?? _Main.Assembly;
+}

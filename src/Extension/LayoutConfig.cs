@@ -1,4 +1,4 @@
-﻿using Skclusive.Material.Component;
+﻿using Skclusive.Material.Core;
 
 namespace Skclusive.Material.Layout
 {

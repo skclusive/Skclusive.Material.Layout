@@ -7,9 +7,9 @@ using Skclusive.Material.Core;
 
 namespace Skclusive.Material.Layout
 {
-    public class TopbarComponent : MaterialComponent
+    public partial class Topbar : MaterialComponent
     {
-        public TopbarComponent() : base("Topbar")
+        public Topbar() : base("Topbar")
         {
         }
 
@@ -18,6 +18,9 @@ namespace Skclusive.Material.Layout
 
         [Parameter]
         public string GrowClass { set; get; }
+
+         [Parameter]
+        public Color Color { set; get; } = Color.Primary;
 
         [Parameter]
         public RenderFragment LogoContent { set; get; }

@@ -8,9 +8,9 @@ using Skclusive.Material.Drawer;
 
 namespace Skclusive.Material.Layout
 {
-    public class SidebarComponent : MaterialComponent
+    public partial class Sidebar : MaterialComponent
     {
-        public SidebarComponent() : base("Sidebar")
+        public Sidebar() : base("Sidebar")
         {
         }
 

@@ -15,7 +15,7 @@
     <RepositoryUrl>https://github.com/skclusive/Skclusive.Material.Layout</RepositoryUrl>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <PackageReference Include="Skclusive.Material.Baseline" Version="5.0.1" />
     <PackageReference Include="Skclusive.Material.Icon" Version="5.0.1" />
     <PackageReference Include="Skclusive.Material.Avatar" Version="5.0.1" />
@@ -28,9 +28,9 @@
     <PackageReference Include="Skclusive.Material.Button" Version="5.0.1" />
     <PackageReference Include="Skclusive.Material.List" Version="5.0.1" />
     <PackageReference Include="Skclusive.Material.Drawer" Version="5.0.1" />
-  </ItemGroup>
+  </ItemGroup> -->
 
-  <!-- <ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Skclusive.Material.Component\Baseline\src\Baseline.csproj" Version="5.0.1" />
     <ProjectReference Include="..\..\Skclusive.Material.Component\Icon\src\Icon.csproj" Version="5.0.1" />
     <ProjectReference Include="..\..\Skclusive.Material.Component\Avatar\src\Avatar.csproj" Version="5.0.1" />
@@ -43,5 +43,5 @@
     <ProjectReference Include="..\..\Skclusive.Material.Component\Button\src\Button.csproj" Version="5.0.1" />
     <ProjectReference Include="..\..\Skclusive.Material.Component\List\src\List.csproj" Version="5.0.1" />
     <ProjectReference Include="..\..\Skclusive.Material.Component\Drawer\src\Drawer.csproj" Version="5.0.1" />
-  </ItemGroup> -->
+  </ItemGroup>
 </Project>

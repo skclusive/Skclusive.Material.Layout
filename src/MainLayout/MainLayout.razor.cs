@@ -66,7 +66,9 @@ namespace Skclusive.Material.Layout
 
         protected bool IsDesktop { set; get; } = false;
 
-        protected bool SidebarOpen { set; get; } = false;
+        protected bool SidebarOpenPersistent { set; get; } = false;
+
+        protected bool SidebarOpenTemporary { set; get; } = false;
 
         protected override IEnumerable<string> Classes
         {
@@ -109,13 +111,17 @@ namespace Skclusive.Material.Layout
 
         protected void HandleSidebarClose()
         {
-            SidebarOpen = false;
+            System.Console.WriteLine($"HandleSidebarClose");
+
+            SidebarOpenTemporary = false;
 
             StateHasChanged();
         }
 
         protected void HandleSidebarClick()
         {
+            System.Console.WriteLine($"HandleSidebarClick");
+
             if (!IsDesktop)
             {
                 HandleSidebarClose();
@@ -124,7 +130,9 @@ namespace Skclusive.Material.Layout
 
         protected void HandleSidebarToggle()
         {
-            SidebarOpen = true;
+            System.Console.WriteLine($"HandleSidebarToggle");
+
+            SidebarOpenTemporary = true;
 
             OnSidebarClick?.Invoke();
 
@@ -137,19 +145,46 @@ namespace Skclusive.Material.Layout
 
             if (LayoutConfig.Responsive)
             {
-                TimeoutDisposal = ExecutionPlan.Delay(500, () => {
+                TimeoutDisposal = SetTimeout(() => {
                     _ = MediaQueryMatcher.InitAsync("(min-width:1280px)");
-                });
+                }, 500);
             }
 
             return Task.CompletedTask;
         }
 
+        private IDisposable MediaChangeDisposable;
+
         protected void OnMediaQueryChanged(object sender, bool match)
         {
             IsDesktop = match;
 
-            SidebarOpen = IsDesktop;
+            System.Console.WriteLine($"OnMediaQueryChanged IsDesktop: {IsDesktop}");
+
+            MediaChangeDisposable?.Dispose();
+            MediaChangeDisposable = null;
+
+            if (IsDesktop)
+            {
+                System.Console.WriteLine($"Desktop. disabling temporary");
+
+                SidebarOpenTemporary = false;
+
+                MediaChangeDisposable = SetTimeout(() =>
+                {
+                    SidebarOpenPersistent = true;
+
+                    System.Console.WriteLine($"Desktop. enabling persistent");
+
+                    _ = InvokeAsync(StateHasChanged);
+                }, 225);
+            }
+            else
+            {
+                SidebarOpenPersistent = false;
+
+                System.Console.WriteLine($"Mobile. disabling persistent");
+            }
 
             _ = InvokeAsync(StateHasChanged);
         }
@@ -157,6 +192,8 @@ namespace Skclusive.Material.Layout
         protected override async ValueTask DisposeAsync()
         {
             TimeoutDisposal?.Dispose();
+
+            MediaChangeDisposable?.Dispose();
 
             if (LayoutConfig.Responsive)
             {

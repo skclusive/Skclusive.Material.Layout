@@ -15,12 +15,6 @@ namespace Skclusive.Material.Layout
         }
 
         [Parameter]
-        public bool Open { set; get; }
-
-        [Parameter]
-        public DrawerVariant Variant { set; get; }
-
-        [Parameter]
         public Action OnClose { set; get; }
 
         [Parameter]
@@ -46,6 +40,12 @@ namespace Skclusive.Material.Layout
 
         [Parameter]
         public string DividerClass { set; get; }
+
+        [Parameter]
+        public bool OpenPersistent { set; get; }
+
+        [Parameter]
+        public bool OpenTemporary { set; get; }
 
         protected virtual string _ContentStyle
         {

@@ -3,7 +3,8 @@
 
 <Baseline />
 <Router
-    AppAssembly="@_Assembly">
+    AppAssembly="@_Assembly"
+    AdditionalAssemblies="@AdditionalAssemblies">
     <Found
         Context="routeData">
         <RouteView
@@ -31,6 +32,9 @@
 
     [Parameter]
     public Assembly Assembly { set; get; }
+
+    [Parameter]
+    public IEnumerable<Assembly> AdditionalAssemblies { set; get; } = Enumerable.Empty<Assembly>();
 
     private Type _Main => Main ?? Default ?? typeof(MainLayout);
 

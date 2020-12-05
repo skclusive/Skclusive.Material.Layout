@@ -6,6 +6,7 @@ namespace Skclusive.Material.Layout
     {
         public LayoutStyleProvider() : base
         (
+            priority: 1100,
             typeof(FooterStyle),
             typeof(MainLayoutStyle),
             typeof(MiniLayoutStyle),

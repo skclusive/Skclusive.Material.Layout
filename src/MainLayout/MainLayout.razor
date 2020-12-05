@@ -31,6 +31,7 @@
         @SidebarContent
     </Sidebar>
     <main
+        @ref="@ContentRef.Current"
         class="@_ContentClass"
         style="@_ContentStyle">
         @BodyContent

@@ -64,6 +64,16 @@ namespace Skclusive.Material.Layout
         [Parameter]
         public string ContentClass { set; get; }
 
+        [Inject]
+        public DomHelpers DomHelpers { set; get; }
+
+        private IReference ContentRef { set; get; } = new Reference();
+
+        protected override async Task OnAfterUpdateAsync()
+        {
+            await DomHelpers.ScrollTopAsync(ContentRef.Current, 0);
+        }
+
         protected bool IsDesktop { set; get; } = false;
 
         protected bool SidebarOpenPersistent { set; get; } = false;
@@ -111,8 +121,6 @@ namespace Skclusive.Material.Layout
 
         protected void HandleSidebarClose()
         {
-            System.Console.WriteLine($"HandleSidebarClose");
-
             SidebarOpenTemporary = false;
 
             StateHasChanged();
@@ -120,8 +128,6 @@ namespace Skclusive.Material.Layout
 
         protected void HandleSidebarClick()
         {
-            System.Console.WriteLine($"HandleSidebarClick");
-
             if (!IsDesktop)
             {
                 HandleSidebarClose();
@@ -130,8 +136,6 @@ namespace Skclusive.Material.Layout
 
         protected void HandleSidebarToggle()
         {
-            System.Console.WriteLine($"HandleSidebarToggle");
-
             SidebarOpenTemporary = true;
 
             OnSidebarClick?.Invoke();
@@ -159,22 +163,16 @@ namespace Skclusive.Material.Layout
         {
             IsDesktop = match;
 
-            System.Console.WriteLine($"OnMediaQueryChanged IsDesktop: {IsDesktop}");
-
             MediaChangeDisposable?.Dispose();
             MediaChangeDisposable = null;
 
             if (IsDesktop)
             {
-                System.Console.WriteLine($"Desktop. disabling temporary");
-
                 SidebarOpenTemporary = false;
 
                 MediaChangeDisposable = SetTimeout(() =>
                 {
                     SidebarOpenPersistent = true;
-
-                    System.Console.WriteLine($"Desktop. enabling persistent");
 
                     _ = InvokeAsync(StateHasChanged);
                 }, 225);
@@ -182,8 +180,6 @@ namespace Skclusive.Material.Layout
             else
             {
                 SidebarOpenPersistent = false;
-
-                System.Console.WriteLine($"Mobile. disabling persistent");
             }
 
             _ = InvokeAsync(StateHasChanged);
